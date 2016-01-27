@@ -1,12 +1,12 @@
 <header>
   <ul id="dropdown-account" class="dropdown-content">
-    <li><a href="#!">Profile</a></li>
+    <li><%= link_to "My Profile", edit_user_registration_path %></li>
     <li><a href="#!">My Courses</a></li>
     <li class="divider"></li>
     <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
   <ul id="dropdown-account-mobile" class="dropdown-content">
-    <li><a href="#!">Profile</a></li>
+    <li><%= link_to "My Profile", edit_user_registration_path %></li>
     <li><a href="#!">My Courses</a></li>
     <li class="divider"></li>
     <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
@@ -22,7 +22,7 @@
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
           <% else %>
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown-account"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown-account"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
           <% end %>
         </ul>
         <ul class="side-nav" id="mobile-demo">
@@ -31,7 +31,7 @@
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
           <% else %>
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown-account-mobile"><%= current_user.email %><i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown-account-mobile"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
           <% end %>
         </ul>
       </div>
