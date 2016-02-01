@@ -4,6 +4,7 @@
     <h2>Log in</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%=render partial: "partials/devisemessage" %>
       <div class="input-field">
         <%= f.email_field :email, :id => "email", :class => "validate", :placeholder => "Email" %>
       </div>
