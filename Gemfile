@@ -14,6 +14,8 @@ gem 'materialize-sass'
 gem 'devise', '~> 3.5', '>= 3.5.5'
 gem 'toastr-rails'
 gem 'mandrill-api', '1.0.52', require: 'mandrill'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
