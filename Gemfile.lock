@@ -59,6 +59,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
+    excon (0.45.4)
     execjs (2.6.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
@@ -75,6 +76,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    mandrill-api (1.0.52)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     materialize-sass (0.97.3)
       sass (~> 3.3)
     mime-types (2.99)
@@ -164,6 +168,7 @@ DEPENDENCIES
   devise (~> 3.5, >= 3.5.5)
   jbuilder (~> 2.0)
   jquery-rails
+  mandrill-api (= 1.0.52)
   materialize-sass
   rails (= 4.2.4)
   sass-rails (~> 5.0)
