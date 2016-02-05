@@ -1,0 +1,15 @@
+<h1><%= @project.name %></h1>
+
+<p><%= image_tag @project.image(:medium) %></p>
+
+<p><%= @project.content %></p>
+
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to [task.project, task] do %>
+        <%= task.note %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
