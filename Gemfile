@@ -15,6 +15,8 @@ gem 'devise', '~> 3.5', '>= 3.5.5'
 gem 'toastr-rails'
 gem 'mandrill-api', '1.0.52', require: 'mandrill'
 
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
