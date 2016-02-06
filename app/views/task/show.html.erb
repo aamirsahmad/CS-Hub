@@ -29,7 +29,7 @@
       <div class="card-action grey-text text-darken-4">
         <h5><%= @task.title %></h5>
         <hr>
-        <%= @task.note %>
+        <%= markdown(@task.note) %>
       </div>
     </div>
   </div>
