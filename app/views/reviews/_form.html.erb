@@ -1,10 +1,12 @@
 <%= form_for([@project, @review]) do |f| %>
   <div id="user_stars"></div>
-  <%= f.text_field :comment %>
+  <%= f.text_field :comment, :placeholder => "Add a comment" %>
+
   <%= f.hidden_field :project_id, :value => @project.id %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="actions">
+  <div class="actions waves-effect waves-light btn">
+  <i class="material-icons right">send</i>
     <%= f.submit %>
   </div>
 <% end %>

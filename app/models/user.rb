@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
          :omniauthable
   validates :name, presence: true, length: {maximum: 25}
 
-  has_many :subscriptions
+  has_many :subscriptions, dependent: :destroy
   has_many :projects, through: :subscriptions
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   after_create :send_notification
 
