@@ -1,0 +1,27 @@
+
+<div class="row">
+  <% User.all.each do |u| %>
+  <div class="col s6 m4 l3">
+    <div class="card small">
+      <div class="card-image waves-effect waves-block waves-light">
+      <%= image_tag avatar_url(u), class: "responsive-img" %>
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">  <%= u.name %> <i class="material-icons right">more_vert</i></span>
+        <p><a href="#">This is a link</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= u.name %><i class="material-icons right">close</i></span>
+        <p>Last sign in: <%= timeago(u.current_sign_in_at) %></p>
+        <p> Email: <%= u.email %> </p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<script>
+  $(function() {
+    $("time.timeago").timeago();
+  })
+</script>

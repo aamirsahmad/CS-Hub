@@ -1,4 +1,4 @@
-<header>
+<header data-no-turbolink="true">
   <ul id="dropdown-account" class="dropdown-content">
     <li><%= link_to "My Profile", edit_user_registration_path %></li>
     <li><%= link_to "My Projects", myprojects_path %></li>
@@ -11,13 +11,17 @@
     <li class="divider"></li>
     <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
   </ul>
-  <nav class="teal lighten-1 z-depth-0">
+  <div class="navbar-fixed">
+  <nav class="teal z-depth-0">
     <div class="container">
       <div class="nav-wrapper">
-        <%= link_to "CS Hub", root_path, class: "brand-logo" %>
+      <%= link_to root_path do %>
+      <%= image_tag "cshub_cropped.png", class: " brand-logo right responsive-img logo-main", size: "175" %>
+      <% end %>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
+        <ul class="left hide-on-med-and-down">
           <li><%= link_to "Projects", root_path %></li>
+          <li><%= link_to "Users", pages_userlist_path %></li>
           <% if(!user_signed_in?) %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
@@ -31,6 +35,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><%= link_to "Projects", root_path %></li>
+          <li><%= link_to "Users", pages_userlist_path %></li>
           <% if(!user_signed_in?) %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Login", new_user_session_path %></li>
@@ -45,4 +50,5 @@
       </div>
     </div>
   </nav>
+  </div>
 </header>

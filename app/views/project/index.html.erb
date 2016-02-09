@@ -2,20 +2,21 @@
 
 <br/>
   <h3>All Projects</h3>
-
   <% @projects.each do |project| %>
         <div class="col s12 m6">
           <div class="card hoverable">
+          <%= link_to project do %>
             <div class="card-image waves-effect-waves-block waves-light">
               <%= image_tag project.image %>
             </div>
+          <% end %>  
             <div class="card-content">
               <span class="card-title grey-text text-darken-4">
                 <%= project.name %>
               </span>
               <div class="card-actions center">
                 <%= link_to project do %>
-                  <button class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Enter</button>
+                  <button class="waves-effect waves-light btn"><i class="material-icons left">forward</i>Enter</button>
                 <% end %>
                   <button class="waves-effect waves-light btn-flat activator">details</button>
               </div>
