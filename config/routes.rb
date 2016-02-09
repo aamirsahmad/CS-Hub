@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'pages/about'
   get 'myprojects' => 'project#list'
   post '/free' => 'charge#free'
-
+  
+  delete '/free' => 'charge#cancel'
+  
   resources :project do
     resources :task, only: [:show]
   end

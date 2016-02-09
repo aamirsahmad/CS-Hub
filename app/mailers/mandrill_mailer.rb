@@ -9,7 +9,7 @@ class MandrillMailer < ActionMailer::Base
     template_content = []
     message = {
       to: [{email: "#{user.email}"}],
-      subject: "Welcome to CodeLoads",
+      subject: "Welcome to CS Hub",
       merge_vars: [
         {
           rcpt: user.email,

@@ -4,7 +4,6 @@
   <h3>All Projects</h3>
 
   <% @projects.each do |project| %>
-      <%= link_to project do %>
         <div class="col s12 m6">
           <div class="card hoverable">
             <div class="card-image waves-effect-waves-block waves-light">
@@ -14,10 +13,19 @@
               <span class="card-title grey-text text-darken-4">
                 <%= project.name %>
               </span>
+              <div class="card-actions center">
+                <%= link_to project do %>
+                  <button class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Enter</button>
+                <% end %>
+                  <button class="waves-effect waves-light btn-flat activator">details</button>
+              </div>
+            </div>
+            <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"><%= project.name %><i class="material-icons right">close</i></span>
+                  <p><%= project.content %></p>
             </div>
           </div>
         </div>
-      <% end %>
   <% end %>
 
 </div>
