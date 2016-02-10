@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
 
   after_create :send_notification
 
+  def forem_name
+    name
+  end
+
+  def forem_email
+    email
+  end
+
   def send_notification
     MandrillMailer.new_user(self).deliver_now
   end

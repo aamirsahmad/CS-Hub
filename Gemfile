@@ -28,10 +28,15 @@ gem 'active_admin-sortable_tree', '~> 0.2.1'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.4'
 
-gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'redcarpet', '3.0.0'
 gem 'coderay', '~> 1.1'
 
-gem 'friendly_id', '~> 5.1'
+gem 'friendly_id', '~> 5.0.0'
+
+gem 'forem', github: "radar/forem", branch: "rails4"
+gem 'forem-bootstrap', github: "radar/forem-bootstrap"
+gem 'forem-redcarpet', github: "radar/forem-redcarpet"
+gem 'will_paginate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

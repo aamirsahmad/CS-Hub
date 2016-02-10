@@ -16,5 +16,6 @@
 //= require jquery_ujs
 //= require toastr
 //= require jquery.timeago
+//= require forem
 //= require turbolinks
 //= require_tree .
