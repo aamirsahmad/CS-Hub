@@ -29,7 +29,7 @@
           <% else %>
           <li>
             <a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown-account">
-            <%= image_tag avatar_url(current_user), class: "circle responsive-img", size: "50" %>&nbsp;
+            <%= image_tag current_user.forem_avatar, class: "circle", size: "50" %>&nbsp;
             <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a>
           </li>
           <% end %>
@@ -44,7 +44,7 @@
           <% else %>
           <li>
             <a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown-account-mobile">
-            <%= image_tag avatar_url(current_user), class: "circle responsive-img", size: "50"  %>&nbsp;
+            <%= image_tag current_user.forem_avatar, class: "circle", size: "50"  %>&nbsp;
             <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a>
           </li>
           <% end %>

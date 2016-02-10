@@ -20,6 +20,15 @@ class User < ActiveRecord::Base
     email
   end
 
+  def forem_avatar
+    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+    if self.image
+      self.image
+    else
+      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identicon&s=40"
+    end
+  end
+
   def send_notification
     MandrillMailer.new_user(self).deliver_now
   end
