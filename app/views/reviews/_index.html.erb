@@ -6,7 +6,7 @@
 <% @reviews.order("id desc").each do |r| %>
 
 <li class="collection-item avatar">
-      <%= image_tag avatar_url(r.user), class: "circle responsive-img", size: "30" %>
+      <%= image_tag r.user.forem_avatar, class: "circle responsive-img", size: "30" %>
       <span class="title"><%= r.user.name %></span>
       <span class=" badge"><%= timeago(r.created_at) %></span>
       <p>

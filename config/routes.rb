@@ -12,10 +12,8 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :edit => 'profile'},
               :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
-
-  root 'project#index'
-
   get 'pages/about'
+  root 'pages#about'
   get 'pages/userlist'
   get 'myprojects' => 'project#list'
   post '/free' => 'charge#free'

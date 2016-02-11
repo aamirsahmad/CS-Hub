@@ -18,7 +18,7 @@
               <% @users.each do |u| %>
                 <span class="valign-wrapper">
                   <div class="chip">
-                   <%= image_tag avatar_url(u), class: "circle responsive-img", size: "50" %>
+                   <%= image_tag u.forem_avatar, class: "circle responsive-img", size: "50" %>
                    <%= u.name %>
                  </div>
                </span>
@@ -48,7 +48,7 @@
             <% @users.each do |u| %>
               <span class="valign-wrapper">
                 <div class="chip">
-                  <%= image_tag avatar_url(u), class: "circle responsive-img", size: "50" %>
+                  <%= image_tag u.forem_avatar, class: "circle responsive-img", size: "50" %>
                   <%= u.name %>
                 </div>
               </span>

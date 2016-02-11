@@ -1,31 +1,32 @@
-
 <div class="row">
+  <br/>
+  <h4 class="center-align">All Users</h4>
   <% User.all.each do |u| %>
-  <div class="col s6 m4 l3">
-    <div class="card small">
-      <div class="card-image waves-effect waves-block waves-light">
-        <%= image_tag u.forem_avatar, class: "responsive-img" %>
-      </div>
-      <div class="card-content activator">
-        <span class="card-title activator grey-text text-darken-4">  <%= u.name %>
-          <p><span class="badge activator"><%= u.position if u.position? %></span></p>
-        </span>
-      </div>
-      <div class="card-reveal">
-        <h6>
-          <span class="card-title grey-text text-darken-4">
-            <%= u.name %><i class="material-icons right">close</i>
-          </span>
-          <p>Last sign in: <%= timeago(u.current_sign_in_at) %></p>
-          <p> Email: <%= u.email %> </p>
-          <% if u.position? && u.position_start? && u.position_end? %>
-          <p><span class="badge">
-            <%= u.position %> from <%= u.position_start.year %> to <%= u.position_end.year %></span></p>
-          <% end %>
+    <div class="col s6 m4 l3">
+      <div class="card small">
+        <div class="card-image waves-effect waves-block waves-light">
+          <%= image_tag u.forem_avatar, class: "responsive-img" %>
         </div>
-      </h6>
+        <div class="card-content activator">
+          <span class="card-title activator grey-text text-darken-4">  <%= u.name %>
+            <p><span class="badge activator"><%= u.position if u.position? %></span></p>
+          </span>
+        </div>
+        <div class="card-reveal">
+          <h6>
+            <span class="card-title grey-text text-darken-4">
+              <%= u.name %><i class="material-icons right">close</i>
+            </span>
+            <p>Last sign in: <%= timeago(u.current_sign_in_at) %></p>
+            <p> Email: <%= u.email %> </p>
+            <% if u.position? && u.position_start? && u.position_end? %>
+            <p><span class="badge">
+              <%= u.position %> from <%= u.position_start.year %> to <%= u.position_end.year %></span></p>
+            <% end %>
+          </h6>
+        </div>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>
 

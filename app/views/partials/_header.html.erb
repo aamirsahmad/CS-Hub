@@ -12,30 +12,30 @@
     <li><%= link_to "Log out", main_app.destroy_user_session_path, method: :delete %></li>
   </ul>
   <div class="navbar-fixed">
-  <nav class="teal z-depth-0">
+  <nav class="white z-depth-0">
     <div class="container">
       <div class="nav-wrapper">
       <%= link_to main_app.root_path do %>
       <%= image_tag "cshub_cropped.png", class: " brand-logo right responsive-img logo-main", size: "175" %>
       <% end %>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
-          <li><%= link_to "Projects", main_app.root_path %></li>
-          <li><%= link_to "Forum", forem.forums_path %></li>
-          <li><%= link_to "Users", main_app.pages_userlist_path %></li>
+          <li><%= link_to "Projects", main_app.project_index_path, class: "black-text" %></li>
+          <li><%= link_to "Forum", forem.forums_path, class: "black-text" %></li>
+          <li><%= link_to "Users", main_app.pages_userlist_path, class: "black-text" %></li>
           <% if(!user_signed_in?) %>
-          <li><%= link_to "Sign Up", main_app.new_user_registration_path %></li>
-          <li><%= link_to "Login", main_app.new_user_session_path %></li>
+          <li><%= link_to "Sign Up", main_app.new_user_registration_path, class: "black-text" %></li>
+          <li><%= link_to "Login", main_app.new_user_session_path, class: "black-text" %></li>
           <% else %>
           <li>
-            <a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown-account">
+            <a class="dropdown-button valign-wrapper black-text" href="#!" data-activates="dropdown-account">
             <%= image_tag current_user.forem_avatar, class: "circle", size: "50" %>&nbsp;
             <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a>
           </li>
           <% end %>
         </ul>
         <ul class="side-nav" id="mobile-demo">
-          <li><%= link_to "Projects", main_app.root_path %></li>
+          <li><%= link_to "Projects", main_app.project_index_path %></li>
           <li><%= link_to "Forum", forem.forums_path %></li>
           <li><%= link_to "Users", main_app.pages_userlist_path %></li>
           <% if(!user_signed_in?) %>
@@ -54,3 +54,40 @@
   </nav>
   </div>
 </header>
+
+
+
+<script>
+
+
+$(document).on('scroll', function (e) { updateColor(); });
+$(document).on('scroll', function (e) { updateSize(); });
+
+function updateColor() {
+  var o = ($(document).scrollTop() / 500)+1;
+    if (o > 1.000) { o = (2-o); }
+    if (o < 0.75) {o = 0.75; }
+    var e = $('nav');
+    var currentColor = e.css('background-color');
+    var rgb = currentColor.replace(/^(rgb|rgba)\(/, '').replace(/\)$/, '').replace(/\s/g, '').split(',');
+    var newColor = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + o + ')';
+    e.attr('style', 'background-color: ' + newColor + ' !important');
+}
+
+// function updateSize() {
+//   var o = ($(document).scrollTop() / 500);
+//     if (o > 1.000) { o = 1.0; }
+//     var e = $('.brand-logo');
+//     var currentHeight = e.css('height');
+//     var newHeight = (o*1.75).toString();
+//     e.attr('style', 'height: ' + newHeight + 'em !important');
+// }
+
+// updateSize();
+updateColor();
+
+
+
+
+
+</script>
