@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     if self.image
       self.image
     else
-      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identicon&s=40"
+      "https://www.gravatar.com/avatar/#{gravatar_id}.jpg?d=identicon&s=200"
     end
   end
 
@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
           provider: access_token.provider,
           email: data.email,
           uid: access_token.uid,
-          image: data.image,
+          image: data.image+"?type=large",
           password: Devise.friendly_token[0,20],
         )
       end
