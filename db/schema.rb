@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160209235865) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
     t.text     "body"
@@ -24,9 +27,9 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -43,8 +46,8 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "forem_categories", force: :cascade do |t|
     t.string   "name",                   null: false
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.integer  "position",   default: 0
   end
 
-  add_index "forem_categories", ["slug"], name: "index_forem_categories_on_slug", unique: true
+  add_index "forem_categories", ["slug"], name: "index_forem_categories_on_slug", unique: true, using: :btree
 
   create_table "forem_forums", force: :cascade do |t|
     t.string  "name"
@@ -65,27 +68,27 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.integer "position",    default: 0
   end
 
-  add_index "forem_forums", ["slug"], name: "index_forem_forums_on_slug", unique: true
+  add_index "forem_forums", ["slug"], name: "index_forem_forums_on_slug", unique: true, using: :btree
 
   create_table "forem_groups", force: :cascade do |t|
     t.string "name"
   end
 
-  add_index "forem_groups", ["name"], name: "index_forem_groups_on_name"
+  add_index "forem_groups", ["name"], name: "index_forem_groups_on_name", using: :btree
 
   create_table "forem_memberships", force: :cascade do |t|
     t.integer "group_id"
     t.integer "member_id"
   end
 
-  add_index "forem_memberships", ["group_id"], name: "index_forem_memberships_on_group_id"
+  add_index "forem_memberships", ["group_id"], name: "index_forem_memberships_on_group_id", using: :btree
 
   create_table "forem_moderator_groups", force: :cascade do |t|
     t.integer "forum_id"
     t.integer "group_id"
   end
 
-  add_index "forem_moderator_groups", ["forum_id"], name: "index_forem_moderator_groups_on_forum_id"
+  add_index "forem_moderator_groups", ["forum_id"], name: "index_forem_moderator_groups_on_forum_id", using: :btree
 
   create_table "forem_posts", force: :cascade do |t|
     t.integer  "topic_id"
@@ -98,10 +101,10 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.boolean  "notified",    default: false
   end
 
-  add_index "forem_posts", ["reply_to_id"], name: "index_forem_posts_on_reply_to_id"
-  add_index "forem_posts", ["state"], name: "index_forem_posts_on_state"
-  add_index "forem_posts", ["topic_id"], name: "index_forem_posts_on_topic_id"
-  add_index "forem_posts", ["user_id"], name: "index_forem_posts_on_user_id"
+  add_index "forem_posts", ["reply_to_id"], name: "index_forem_posts_on_reply_to_id", using: :btree
+  add_index "forem_posts", ["state"], name: "index_forem_posts_on_state", using: :btree
+  add_index "forem_posts", ["topic_id"], name: "index_forem_posts_on_topic_id", using: :btree
+  add_index "forem_posts", ["user_id"], name: "index_forem_posts_on_user_id", using: :btree
 
   create_table "forem_subscriptions", force: :cascade do |t|
     t.integer "subscriber_id"
@@ -123,10 +126,10 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.string   "slug"
   end
 
-  add_index "forem_topics", ["forum_id"], name: "index_forem_topics_on_forum_id"
-  add_index "forem_topics", ["slug"], name: "index_forem_topics_on_slug", unique: true
-  add_index "forem_topics", ["state"], name: "index_forem_topics_on_state"
-  add_index "forem_topics", ["user_id"], name: "index_forem_topics_on_user_id"
+  add_index "forem_topics", ["forum_id"], name: "index_forem_topics_on_forum_id", using: :btree
+  add_index "forem_topics", ["slug"], name: "index_forem_topics_on_slug", unique: true, using: :btree
+  add_index "forem_topics", ["state"], name: "index_forem_topics_on_state", using: :btree
+  add_index "forem_topics", ["user_id"], name: "index_forem_topics_on_user_id", using: :btree
 
   create_table "forem_views", force: :cascade do |t|
     t.integer  "user_id"
@@ -139,9 +142,9 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "past_viewed_at"
   end
 
-  add_index "forem_views", ["updated_at"], name: "index_forem_views_on_updated_at"
-  add_index "forem_views", ["user_id"], name: "index_forem_views_on_user_id"
-  add_index "forem_views", ["viewable_id"], name: "index_forem_views_on_viewable_id"
+  add_index "forem_views", ["updated_at"], name: "index_forem_views_on_updated_at", using: :btree
+  add_index "forem_views", ["user_id"], name: "index_forem_views_on_user_id", using: :btree
+  add_index "forem_views", ["viewable_id"], name: "index_forem_views_on_viewable_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -151,10 +154,10 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -169,7 +172,7 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.string   "slug"
   end
 
-  add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true
+  add_index "projects", ["slug"], name: "index_projects_on_slug", unique: true, using: :btree
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "project_id"
@@ -180,8 +183,8 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id"
-  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+  add_index "reviews", ["project_id"], name: "index_reviews_on_project_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "subscriptions", force: :cascade do |t|
     t.integer  "project_id"
@@ -190,9 +193,9 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "subscriptions", ["project_id", "user_id"], name: "index_subscriptions_on_project_id_and_user_id", unique: true
-  add_index "subscriptions", ["project_id"], name: "index_subscriptions_on_project_id"
-  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id"
+  add_index "subscriptions", ["project_id", "user_id"], name: "index_subscriptions_on_project_id_and_user_id", unique: true, using: :btree
+  add_index "subscriptions", ["project_id"], name: "index_subscriptions_on_project_id", using: :btree
+  add_index "subscriptions", ["user_id"], name: "index_subscriptions_on_user_id", using: :btree
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
@@ -206,8 +209,8 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.string   "slug"
   end
 
-  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id"
-  add_index "tasks", ["slug"], name: "index_tasks_on_slug", unique: true
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
+  add_index "tasks", ["slug"], name: "index_tasks_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",               null: false
@@ -234,7 +237,12 @@ ActiveRecord::Schema.define(version: 20160209235865) do
     t.boolean  "forem_auto_subscribe",   default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "reviews", "projects"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "subscriptions", "projects"
+  add_foreign_key "subscriptions", "users"
+  add_foreign_key "tasks", "projects"
 end
