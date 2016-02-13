@@ -131,7 +131,7 @@
 
 <script>
   $('#average_rating').raty({
-    path: '/assets',
+    path: 'https://s3.amazonaws.com/cshub-bucket/assets/images',
     readOnly: true,
     score: <%= @project.average_rating %>
   });
