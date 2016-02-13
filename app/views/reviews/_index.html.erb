@@ -21,7 +21,7 @@
 
   <script type>
     $('#stars_<%= r.id %>').raty({
-      path: '/assets',
+      path: 'https://s3.amazonaws.com/cshub-bucket/assets/images',
       readOnly: true,
       score: <%= r.star %>
     });
