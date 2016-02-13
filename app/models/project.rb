@@ -5,8 +5,14 @@ class Project < ActiveRecord::Base
   has_many :subscriptions
   has_many :users, through: :subscriptions
   has_many :reviews
-  has_attached_file :image, styles: { medium: "680x300>", thumb: "170x75>" }, default_url: "/images/:style/missing.png"
-  
+  has_attached_file :image, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  },
+  default_url: "/images/:style/missing.png"
+
+
   validates :name, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 500 }
   validates :price, presence: true, numericality: {only_integer: true}

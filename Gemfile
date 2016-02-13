@@ -27,6 +27,7 @@ gem 'active_skin'
 gem 'active_admin-sortable_tree', '~> 0.2.1'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.4'
+gem 'aws-sdk', '< 2.0'
 
 gem 'redcarpet', '3.0.0'
 gem 'coderay', '~> 1.1'
