@@ -2,10 +2,12 @@
 @import "toastr";
 @import 'forem/base';
 
+
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: #eee;
 }
 
 main {

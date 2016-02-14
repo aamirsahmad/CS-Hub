@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CS Hub</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>CS Hub</title>
+    <meta name="description" content="Examples for creative website header animations using Canvas and JavaScript" />
+    <meta name="keywords" content="cshub, club, computer, science, university, york" />
+    <meta name="author" content="Codrops" />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200,400,800' rel='stylesheet' type='text/css'>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,9 +34,7 @@
 <%= render partial: "partials/header" %>
 <%= render partial: "partials/notification" %>
   <main>
-    <div class="container">
       <%= yield %>
-    </div>
   </main>
 <%= render partial: "partials/footer" %>
 </body>

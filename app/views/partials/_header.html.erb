@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "normalize" %>
+<%= stylesheet_link_tag "homepage-canvas" %>
+
+
 <header data-no-turbolink="true">
   <ul id="dropdown-account" class="dropdown-content">
     <li><%= link_to "My Profile", main_app.edit_user_registration_path %></li>
@@ -12,14 +16,17 @@
     <li><%= link_to "Log out", main_app.destroy_user_session_path, method: :delete %></li>
   </ul>
   <div class="navbar-fixed">
-  <nav class="white z-depth-0">
+  <nav class="white z-depth-1">
     <div class="container">
       <div class="nav-wrapper">
       <%= link_to main_app.root_path do %>
-      <%= image_tag "cshub_cropped.png", class: " brand-logo right responsive-img logo-main", size: "175" %>
+      <%= image_tag "cshub_cropped.png", class: "brand-logo left responsive-img logo-main hide-on-med-and-down", size: "175" %>
+      <% end %>
+      <%= link_to main_app.root_path do %>
+      <%= image_tag "cshub_cropped.png", class: "brand-logo right responsive-img logo-main hide-on-large-only", size: "175" %>
       <% end %>
         <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i class="material-icons">menu</i></a>
-        <ul class="left hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down">
           <li><%= link_to "Projects", main_app.project_index_path, class: "black-text" %></li>
           <li><%= link_to "Forum", forem.forums_path, class: "black-text" %></li>
           <li><%= link_to "Users", main_app.pages_userlist_path, class: "black-text" %></li>
