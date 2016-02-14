@@ -17,5 +17,9 @@
 //= require toastr
 //= require jquery.timeago
 //= require forem
+//= require EasePack.min
+//= require homepage-canvas
+//= require rAF
+//= require TweenLite.min
 //= require turbolinks
 //= require_tree .
