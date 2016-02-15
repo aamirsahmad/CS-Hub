@@ -31,8 +31,7 @@
           <li><%= link_to "Forum", forem.forums_path, class: "black-text" %></li>
           <li><%= link_to "Users", main_app.pages_userlist_path, class: "black-text" %></li>
           <% if(!user_signed_in?) %>
-          <li><%= link_to "Sign Up", main_app.new_user_registration_path, class: "black-text" %></li>
-          <li><%= link_to "Login", main_app.new_user_session_path, class: "black-text" %></li>
+          <li><%= link_to "Login", main_app.new_user_session_path, class: "waves-effect waves-light btn" %></li>
           <% else %>
           <li>
             <a class="dropdown-button valign-wrapper black-text" href="#!" data-activates="dropdown-account">
@@ -46,13 +45,12 @@
           <li><%= link_to "Forum", forem.forums_path %></li>
           <li><%= link_to "Users", main_app.pages_userlist_path %></li>
           <% if(!user_signed_in?) %>
-          <li><%= link_to "Sign Up", main_app.new_user_registration_path %></li>
           <li><%= link_to "Login", main_app.new_user_session_path %></li>
           <% else %>
           <li>
             <a class="dropdown-button valign-wrapper" href="#!" data-activates="dropdown-account-mobile">
             <%= image_tag current_user.forem_avatar, class: "circle", size: "50"  %>&nbsp;
-            <%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a>
+            <%= current_user.name %></a>
           </li>
           <% end %>
         </ul>

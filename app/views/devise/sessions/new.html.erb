@@ -1,31 +1,62 @@
-<div class="row">
-  <div class="col m6 offset-m3 center">
-    
-    <h2>Log in</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <%= link_to "Log in with Google", user_omniauth_authorize_path(:google_oauth2), class: "btn red darken-1" %>
-    <%= link_to "Log in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn blue darken-4" %>
-    <%= link_to "Log in with Github", user_omniauth_authorize_path(:github), class: "btn grey darken-2" %>
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%=render partial: "partials/devisemessage" %>
-      <div class="input-field">
-        <%= f.email_field :email, :id => "email", :class => "validate", :placeholder => "Email" %>
-      </div>
+<div class="container">
+  <div class="row"> <h2>Log in</h2></div>
+  <div class="card">
+    <div class="row">
+      <div class="col m6 center">
+        <div class="card-content">
+          <span class="card-title">Have an existing account?</span>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%=render partial: "partials/devisemessage" %>
+            <div class="input-field">
+              <%= f.email_field :email, :id => "email", :class => "validate", :placeholder => "Email" %>
+            </div>
 
-      <div class="field">
-        <%= f.password_field :password, autocomplete: "off", :id => "email", :class => "validate", :placeholder => "Password" %>
-      </div>
+            <div class="field">
+              <%= f.password_field :password, autocomplete: "off", :id => "email", :class => "validate", :placeholder => "Password" %>
+            </div>
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+            <%= link_to "Forgot password", new_user_password_path, :class => "btn-flat waves-effect waves-light" %>
+          <% end %>
         </div>
-      <% end -%>
-
-      <button class="btn waves-effect waves-light" type="submit" name="action">Login</button>
-      <%= link_to "Forgot password", new_user_password_path, :class => "btn waves-effect waves-light" %>
-    <% end %>
-
+        <div class="card-action">
+          <h5>Or login with:</h5>
+            <%= link_to user_omniauth_authorize_path(:google_oauth2) do %>
+              <btn class="btn-floating btn-large waves-effect waves-light red darken-1">
+                <i class="fa fa-google"></i>
+              </a>
+            <% end %>
+            <%= link_to user_omniauth_authorize_path(:facebook) do %>
+              <btn class="btn-floating btn-large waves-effect waves-light blue darken-4">
+                <i class="fa fa-facebook"></i>
+              </a>
+            <% end %>
+            <%= link_to user_omniauth_authorize_path(:github) do %>
+              <btn class="btn-floating btn-large waves-effect waves-light grey darken-2">
+                <i class="fa fa-github"></i>
+              </a>
+            <% end %>
+        </div>
+      </div><!--col-->
+          <div class="col m6">
+            <div class="card-content">
+              <span class="card-title">No Account?</span>
+                <p>It's very easy to sign up. Log in with a popular service or create your own account on here for free. Creating an account gets you access to our forums as well as past tests and exams shared by many other students! </p>
+            </div>
+            <div class="card-action center">
+              <%= link_to "Sign up for free", main_app.new_user_registration_path, class: "waves-effect waves-light btn-large teal lighten-1" %>
+            </div>
+          </div>
+    </div>
+  </div>
   </div>
 </div>

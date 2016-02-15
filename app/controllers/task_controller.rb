@@ -14,7 +14,7 @@ class TaskController < ApplicationController
       @next_task = @task.next
       @prev_task = @task.prev
     else
-      flash[:alert] = "Permission denied"
+      flash[:alert] = "Permission denied: You need be attending in order to view a task"
       redirect_to project
     end
   end

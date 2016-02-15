@@ -74,6 +74,10 @@ p.ref {
   font-weight: 200;
 }
 
+.main-title .card {
+  background-color: rgba(0,0,0,.4);
+}
+
 @media only screen and (max-width : 768px) {
   .homepage-canvas .main-title{
     font-size: 3em;
