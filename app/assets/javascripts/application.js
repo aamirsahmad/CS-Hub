@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require toastr
 //= require jquery.timeago
+//= require jquery.raty
 //= require forem
 //= require EasePack.min
 //= require homepage-canvas

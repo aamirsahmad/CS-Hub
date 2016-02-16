@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.02'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( forem.css forem.js normalize.css homepage-canvas.css EasePack.min.js homepage-canvas.js jquery.raty.js rAF.js TweenLite.min.js)
+Rails.application.config.assets.precompile += %w( forem.css forem.js normalize.css homepage-canvas.css EasePack.min.js jquery.raty/* homepage-canvas.js rAF.js TweenLite.min.js)
