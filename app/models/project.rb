@@ -18,6 +18,10 @@ class Project < ActiveRecord::Base
   validates :price, presence: true, numericality: {only_integer: true}
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  def trimmedName
+    name.length > 25? name[0..25] + "..." : name
+  end
+
   def average_rating
     reviews.blank? ? 0 : reviews.average(:star).round(2)
   end

@@ -2,7 +2,7 @@
   <br/>
   <h4 class="center-align">All Projects</h4>
   <% @projects.each do |project| %>
-        <div class="col s12 m6">
+        <div class="col s12 m6 l4">
           <div class="card hoverable">
           <%= link_to project do %>
             <div class="card-image waves-effect-waves-block waves-light">
@@ -11,7 +11,7 @@
           <% end %>  
             <div class="card-content">
               <span class="card-title grey-text text-darken-4">
-                <%= project.name %>
+                <%= project.trimmedName %>
               </span>
               <div class="card-actions center">
                 <%= link_to project do %>
