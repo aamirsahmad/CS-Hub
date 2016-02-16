@@ -7,7 +7,7 @@ Forem.avatar_user_method = 'forem_avatar'
 Forem.per_page = 20
 Forem.moderate_first_post = false
 Rails.application.config.to_prepare do
-  Forem::ApplicationController.layout "application"
+  Forem.layout = "application"
 end
 # Rails.application.config.to_prepare do
 #   If you want to change the layout that Forem uses, uncomment and customize the next line:
