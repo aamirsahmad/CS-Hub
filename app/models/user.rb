@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, 
+         :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
   validates :name, presence: true, length: {maximum: 25}
 
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def send_notification
-    MandrillMailer.new_user(self).deliver_now
+    MandrillMailer.new_user(self).deliver
   end
 
   def self.find_for_google_oauth2(access_token, signed_in_resouce=nil)
@@ -108,5 +108,5 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
 end

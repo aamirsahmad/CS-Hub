@@ -1,5 +1,5 @@
 Forem.user_class = "User"
-Forem.email_from_address = "please-change-me@example.com"
+Forem.email_from_address = "noreply@cshub.ca"
 Forem.avatar_user_method = 'forem_avatar'
 
 # If you do not want to use gravatar for avatars then specify the method to use here:

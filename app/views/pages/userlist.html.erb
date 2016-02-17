@@ -1,17 +1,19 @@
 <div class="row">
   <br/>
   <h4 class="center-align">All Users</h4>
-  <% User.all.each do |u| %>
+  <% User.all.order('position, position_start DESC, created_at DESC').each do |u| %>
     <div class="col s6 m4 l2">
-      <div class="card small">
+      <div class="card user-card">
         <div class="card-image waves-effect waves-block waves-light">
-          <%= image_tag u.forem_avatar, class: "responsive-img" %>
+          <%= image_tag u.forem_avatar, class: "responsive-img activator" %>
+            <span class="card-title activator grey lighten-4 teal-text text-darken-2"><b><%= u.name %></b>
+            <br/>
+              <% if u.position? %>
+              <span class="badge"><%= u.position %></span>
+              <% end %>
+            </span>
         </div>
-        <div class="card-content activator">
-          <span class="card-title activator grey-text text-darken-4">  <%= u.name %>
-            <p><span class="badge activator"><%= u.position if u.position? %></span></p>
-          </span>
-        </div>
+
         <div class="card-reveal">
           <h6>
             <span class="card-title grey-text text-darken-4">
