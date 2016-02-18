@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'uploads/new'
+
+  get 'uploads/create'
+
+  get 'uploads/index'
+
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.
@@ -18,9 +24,9 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'myprojects' => 'project#list'
   post '/free' => 'charge#free'
-  
+
   delete '/free' => 'charge#cancel'
-  
+
   resources :project do
     resources :task, only: [:show]
   end
@@ -28,6 +34,8 @@ Rails.application.routes.draw do
   resources :project do
     resources :reviews, only: [:create, :destroy]
   end
+
+  resources :uploads
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
