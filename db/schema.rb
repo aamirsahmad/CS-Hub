@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218090524) do
+ActiveRecord::Schema.define(version: 20160220023918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -224,7 +224,10 @@ ActiveRecord::Schema.define(version: 20160218090524) do
     t.string   "term"
     t.integer  "type_num"
     t.string   "type_of"
+    t.integer  "user_id"
   end
+
+  add_index "uploads", ["user_id"], name: "index_uploads_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",               null: false

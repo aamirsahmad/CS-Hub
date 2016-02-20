@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions, dependent: :destroy
   has_many :projects, through: :subscriptions
   has_many :reviews, dependent: :destroy
+  has_many :uploads
 
   after_create :send_notification
 
@@ -31,6 +32,10 @@ class User < ActiveRecord::Base
 
   def send_notification
     MandrillMailer.new_user(self).deliver
+  end
+
+  def upload_count
+    self.uploads.count
   end
 
   def self.find_for_google_oauth2(access_token, signed_in_resouce=nil)
