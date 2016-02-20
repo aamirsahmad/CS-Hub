@@ -1,6 +1,79 @@
-<h1> Upload a file </h1>
+<div class="container">
+  <p>Please follow the <i>form convention</i> when filling out the details below (as the file you upload will be renamed accordingly).</p>
+  <p>When submitting a .pdf file, please make sure the original question is included (do not just post the answers to some random question).</p>
+  <p>We also recommend removing all your personal details out of the file.</p>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Naming Convention Examples</div>
+        <div class="collapsible-body">
+          <table class="responsive-table striped">
+         <thead>
+           <tr>
+               <th data-field="id">Subject</th>
+               <th data-field="name">Course</th>
+               <th data-field="price">Term</th>
+               <th data-field="price">YearStart</th>
+               <th data-field="price">Professor</th>
+               <th data-field="price">Assessment Type</th>
+               <th data-field="price">Assessment #</th>
+           </tr>
+         </thead>
 
-<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag 'Upload file' %>
-<% end %>
+         <tbody>
+           <tr>
+             <td>EECS</td>
+             <td>3101</td>
+             <td>F</td>
+             <td>2015</td>
+             <td>Ruppert</td>
+             <td>Test</td>
+             <td>2</td>
+
+
+           </tr>
+           <tr>
+             <td>MATH</td>
+             <td>1090</td>
+             <td>W</td>
+             <td>2016</td>
+             <td>Michkine</td>
+             <td>Assignment</td>
+             <td>3</td>
+
+           </tr>
+           <tr>
+             <td>CHEM</td>
+             <td>1000</td>
+             <td>SU</td>
+             <td>2013</td>
+             <td>Klimkina</td>
+             <td>Lab</td>
+             <td>1</td>
+           </tr>
+           <tr>
+             <td>PSYC</td>
+             <td>1010</td>
+             <td>Y</td>
+             <td>2015</td>
+             <td>Goldberg</td>
+             <td>Exam</td>
+             <td>1</td>
+           </tr>
+         </tbody>
+       </table>
+        </div>
+      </li>
+    </ul>
+    <div class="card-panel">
+      <h1> Upload a file </h1>
+      <%= render "form" %>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+  });
+});
+</script>

@@ -1,0 +1,43 @@
+<%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
+
+  <%= file_field_tag :file, class: "card-panel hoverable grey lighten-2", required: "true" %>
+
+  <div class="input-field">
+    <%= text_field_tag :subject, nil, placeholder: "ex: EECS", :required => "true" %>
+    <%= label_tag(:subject, "Subject") %>
+  </div>
+  <div class="input-field">
+    <%= number_field_tag :course, nil, placeholder: "ex: 3101", required: "true", :min => 1000, :max => 6000 %>
+    <%= label_tag(:course, "Course") %>
+  </div>
+  <div class="input-field">
+    <%= select_tag(:term, options_for_select([['F', 'F'], ['W', 'W'], ['SU', 'SU'], ['S1', 'S1'], ['S2', 'S2'], ['Y', 'Y']], nil), :include_blank => '-- Select One --', :required => true ) %>
+    <%= label_tag(:term, "Term") %>
+  </div>
+  <div class="input-field">
+    <%= number_field_tag :year, nil, placeholder: "ex: 2016", required: "true", :max => Time.now.strftime("%Y").to_i %>
+    <%= label_tag(:year, "Year") %>
+  </div>
+  <div class="input-field">
+    <%= text_field_tag :instructor, nil, placeholder: "ex: Smith", required: "true" %>
+    <%= label_tag(:instructor, "Instructor (Last name)") %>
+  </div>
+  <div class="input-field">
+    <%= select_tag(:type_of, options_for_select([['Assignment', 'Assignment'], ['Test', 'Test'], ['Lab', 'Lab'], ['Exam', 'Exam']], nil), :include_blank => '-- Select One --', :required => true ) %>
+    <%= label_tag(:type_of, "Assessment Type") %>
+  </div>
+  <div class="input-field">
+    <%= number_field_tag :type_num, nil, placeholder: "ex: 3", required: "true", :min => 0, :max => 20 %>
+    <%= label_tag(:type_num, "Assessment #") %>
+  </div>
+  <%= submit_tag 'Upload file', class: "btn waves-effect waves-light" %>
+<% end %>
+
+<script>
+$(document).ready(function() {
+  $('select').material_select();
+});
+</script>
+
+<!-- For future migrations when change Year to Date -->
+<!--<%= select_year(Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 95, :field_name => :year, :prefix => :upload) %>-->
