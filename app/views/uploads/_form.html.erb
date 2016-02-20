@@ -1,6 +1,6 @@
 <%= form_tag uploads_path, enctype: 'multipart/form-data' do %>
 
-  <%= file_field_tag :file, class: "card-panel hoverable grey lighten-2", required: "true" %>
+  <%= file_field_tag :document, class: "card-panel hoverable grey lighten-2", required: "true" %> ** Please upload .PDFs only
 
   <div class="input-field">
     <%= text_field_tag :subject, nil, placeholder: "ex: EECS", :required => "true" %>
@@ -15,7 +15,7 @@
     <%= label_tag(:term, "Term") %>
   </div>
   <div class="input-field">
-    <%= number_field_tag :year, nil, placeholder: "ex: 2016", required: "true", :max => Time.now.strftime("%Y").to_i %>
+    <%= number_field_tag :year, nil, placeholder: "ex: 2016", required: "true", :min => (Time.now.strftime("%Y").to_i-15), :max => Time.now.strftime("%Y").to_i %>
     <%= label_tag(:year, "Year") %>
   </div>
   <div class="input-field">

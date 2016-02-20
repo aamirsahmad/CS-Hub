@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160220023918) do
+ActiveRecord::Schema.define(version: 20160220061929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,8 +215,8 @@ ActiveRecord::Schema.define(version: 20160220023918) do
   create_table "uploads", force: :cascade do |t|
     t.string   "url"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "subject"
     t.integer  "course"
     t.string   "instructor"
@@ -225,6 +225,10 @@ ActiveRecord::Schema.define(version: 20160220023918) do
     t.integer  "type_num"
     t.string   "type_of"
     t.integer  "user_id"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   add_index "uploads", ["user_id"], name: "index_uploads_on_user_id", using: :btree

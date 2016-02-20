@@ -1,6 +1,9 @@
 class Upload < ActiveRecord::Base
   belongs_to :user
-  validates :name, presence: true
+  has_attached_file :document
+  validates_attachment_content_type :document, :content_type => ["application/pdf", "application/force-download"]
+  validates_with AttachmentPresenceValidator, attributes: :document
+  validates_with AttachmentSizeValidator, attributes: :document, less_than: 2.megabytes
   validates :subject, presence: true, length: { maximum: 4 }
   validates :course, presence: true, length: { maximum: 4 }
   validates :term, presence: true, length: { maximum: 2 }

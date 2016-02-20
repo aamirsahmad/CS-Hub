@@ -6,26 +6,16 @@ class UploadsController < ApplicationController
 
   def create
     # Make object in bucket
-    key = "uploads/" + params[:file].original_filename + DateTime.now.to_s
+    key = "uploads/" + params[:document].original_filename + DateTime.now.to_s
     obj = S3_BUCKET.objects[key]
     #upload file
     obj.write(
-      file: params[:file],
+      file: params[:document],
       acl: :public_read
     )
     #create object for upload
-    @upload = Upload.new(
-      url: obj.public_url,
-      name: obj.key[8..-1],
-      subject: params[:subject],
-      course: params[:course],
-      term: params[:term],
-      year: params[:year],
-      instructor: params[:instructor],
-      type_of: params[:type_of],
-      type_num: params[:type_num],
-      user_id: current_user.id
-    )
+    @upload = Upload.create( upload_params )
+    @upload.update(user_id: current_user.id)
 
     #save upload
     if @upload.save
@@ -44,6 +34,6 @@ class UploadsController < ApplicationController
 
   private
     def upload_params
-      params.require(:upload).permit(:file, :subject)
+      params.permit(:subject, :course, :term, :year, :instructor, :type_of, :type_num, :document, :user_id)
     end
 end
