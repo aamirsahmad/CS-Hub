@@ -1,54 +1,115 @@
+<span>
+  <div class="teal lighten-1 center-align z-depth-1 valign-wrapper">
+    <h4 class = "valign center-block thin white-text">All Uploads</h4>
+  </div>
+</span>
 
 <div class="container" data-no-turbolink="true">
-  <h1 class="pull-left"> All Uploads </h1>
-  <h5 class="pull-right">
-    <i class="medium material-icons">present_to_all</i>
-    <%= @uploads.count %> total
-  </h5>
-
-  <!-- Modal Trigger -->
-  <div class="center-align">
-    <div class="row">
-      <div class="col s6 offset-s3">
-          <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#modal1"><i class="material-icons">add</i></a>
-          Submit yours
+  <div class="row">
+    <% if current_user.uploads.count < @min_required_uploads %>
+    <h6 class="right red card-panel lighten-4 center-align">
+      <div class="red-text"><%= current_user.uploads.count %> shared</div>
+      <i class="small material-icons">present_to_all</i>
+      <div class=""><%= @uploads.count %> total</div>
+    </h6>
+    <!-- Modal Trigger -->
+    <div id="new-upload">
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="modal-trigger btn-floating btn-large left waves-effect waves-light orange lighten-1" href="#modal1"><i class="material-icons">add</i></a>
+      </div>
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Disclaimer</h4>
+          <p>By clicking agree, you promise to follow the York University code of <a href = "http://www.yorku.ca/academicintegrity/general/">Academic Integrity</a> and promise to not plagiarize any material found on this website, but instead <b>use your own brain!</b>
+            This means that you agree to use the material posted on here as study <b>references</b> and <b>not as free answers</b> because you are lazy. </p>
+          <p>You also agree that if you do submit other peoples' work that you are a <b>moron</b>, because you risk <b>expulsion</b>, and wasting all that time and <b>money</b> that you (or your poor parents) spent.
+          <p>Lastly, by clicking accept you also agree that the Computing Students' Hub (the club website that you're on) holds <b>no responsibility</b> for your misdeeds if you choose to be academically dishonest.</p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Agree", new_upload_path, class: "modal-action modal-close waves-effect waves-green btn-flat green" %>
+          <%= link_to "Disagree", root_path, class: "modal-action modal-close waves-effect waves-green btn-flat red" %>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h4>Disclaimer</h4>
-      <p>By clicking agree, you promise to follow the York University code of <a href = "http://www.yorku.ca/academicintegrity/general/">Academic Integrity</a> and promise to not plagiarize any material found on this website, but instead <b>use your own brain!</b>
-        This means that you agree to use the material posted on here as study <b>references</b> and <b>not as free answers</b> because you are lazy. </p>
-      <p>You also agree that if you do submit other peoples' work that you are a <b>moron</b>, because you risk <b>expulsion</b>, and wasting all that time and <b>money</b> that you (or your poor parents) spent.
-      <p>Lastly, by clicking accept you also agree that the Computing Students' Hub (the club website that you're on) holds <b>no responsibility</b> for your misdeeds if you choose to be academically dishonest.</p>
+    <% else %>
+    <h6 class="right teal card-panel lighten-4 center-align">
+      <div class=""><%= current_user.uploads.count %> shared</div>
+      <i class="small material-icons">present_to_all</i>
+      <div class=""><%= @uploads.count %> total</div>
+    </h6>
+    <!-- Modal Trigger -->
+    <div id="new-upload" class="pull-left">
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="modal-trigger btn-floating btn-large left waves-effect waves-light orange lighten-1" href="#modal1"><i class="material-icons">add</i></a>
+      </div>
+      <!-- Modal Structure -->
+      <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+          <h4>Disclaimer</h4>
+          <p>By clicking agree, you promise to follow the York University code of <a href = "http://www.yorku.ca/academicintegrity/general/">Academic Integrity</a> and promise to not plagiarize any material found on this website, but instead <b>use your own brain!</b>
+            This means that you agree to use the material posted on here as study <b>references</b> and <b>not as free answers</b> because you are lazy. </p>
+          <p>You also agree that if you do submit other peoples' work that you are a <b>moron</b>, because you risk <b>expulsion</b>, and wasting all that time and <b>money</b> that you (or your poor parents) spent.
+          <p>Lastly, by clicking accept you also agree that the Computing Students' Hub (the club website that you're on) holds <b>no responsibility</b> for your misdeeds if you choose to be academically dishonest.</p>
+        </div>
+        <div class="modal-footer">
+          <%= link_to "Agree", new_upload_path, class: "modal-action modal-close waves-effect waves-green btn-flat green" %>
+          <%= link_to "Disagree", root_path, class: "modal-action modal-close waves-effect waves-green btn-flat red" %>
+        </div>
+      </div>
     </div>
-
-    <div class="modal-footer">
-      <%= link_to "Agree", new_upload_path, class: "modal-action modal-close waves-effect waves-green btn-flat green" %>
-      <%= link_to "Disagree", root_path, class: "modal-action modal-close waves-effect waves-green btn-flat red" %>
-    </div>
+    <% end %>
   </div>
-
   <% if current_user.uploads.count < @min_required_uploads %>
-  <div class="card-panel">
-    <div class="row">
-      <div class="col s2">
-        <i class="medium material-icons">info_outline</i>
+    <div class="card teal darken-2 z-depth-0">
+      <div class="card-content teal white-text">
+        <span class="card-title">
+          <i class="medium material-icons">info_outline</i>
+          Just so you know...
+        </span>
+        <div class="row">
+          <div class="col s12 flow-text">
+            <div class="divider"></div>
+              <div class="section center-align">
+                <p> You (<%= current_user.name %>) are seeing this page because you have <b><%= current_user.upload_count %></b> personal uploads. </p>
+                <p> To see all the documents left by other students you need to upload a minimum of <b><%= @min_required_uploads %></b> </p>
+                <p> Gotta leave some before you can take some! It's only fair. </p>
+              </div>
+              <div class="divider"></div>
+          </div>
+        </div>
       </div>
-      <div class="col s10 flow-text">
-        <p> You (<%= current_user.name %>) are seeing this page because you have <b><%= current_user.upload_count %></b> personal uploads. </p>
-        <p> To see all the documents left by other students you need to upload a minimum of <b><%= @min_required_uploads %></b> </p>
-        <p> Gotta leave some before you can take some! It's only fair. </p>
+      <div class="card-action teal darken-2">
+        <!-- Modal Trigger -->
+        <div class="center-align">
+          <div class="row">
+            <div class="col s6 offset-s3">
+              <a class="modal-trigger btn btn-large waves-effect waves-light orange lighten-1" href="#modal1">Submit yours <i class="material-icons">send</i></a>
+            </div>
+          </div>
+        </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Disclaimer</h4>
+            <p>By clicking agree, you promise to follow the York University code of <a href = "http://www.yorku.ca/academicintegrity/general/">Academic Integrity</a> and promise to not plagiarize any material found on this website, but instead <b>use your own brain!</b>
+              This means that you agree to use the material posted on here as study <b>references</b> and <b>not as free answers</b> because you are lazy. </p>
+            <p>You also agree that if you do submit other peoples' work that you are a <b>moron</b>, because you risk <b>expulsion</b>, and wasting all that time and <b>money</b> that you (or your poor parents) spent.
+            <p>Lastly, by clicking accept you also agree that the Computing Students' Hub (the club website that you're on) holds <b>no responsibility</b> for your misdeeds if you choose to be academically dishonest.</p>
+          </div>
+
+          <div class="modal-footer">
+            <%= link_to "Agree", new_upload_path, class: "modal-action modal-close waves-effect waves-green btn-flat green" %>
+            <%= link_to "Disagree", root_path, class: "modal-action modal-close waves-effect waves-green btn-flat red" %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-    <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='http://www.youtube.com/embed/RfiQYRn7fBg' frameborder='0' allowfullscreen></iframe></div>
-
+    <div class="card-panel"><p class="center-align flow-text"> Relevant video: </p>
+      <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='http://www.youtube.com/embed/RfiQYRn7fBg' frameborder='0' allowfullscreen></iframe></div>
+    </div>
   <% else %>
-
-    <div class="card-panel">
+    <div class="card-panel z-depth-0">
       <table class="responsive-table bordered striped">
         <thead>
           <tr>
@@ -62,7 +123,6 @@
             <th data-field="file_link">Link</th>
           </tr>
         </thead>
-
         <tbody>
           <% @uploads.order("subject, course, term, year, instructor, type_of").each do |upload| %>
             <tr>

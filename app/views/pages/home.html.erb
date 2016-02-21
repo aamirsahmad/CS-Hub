@@ -18,32 +18,71 @@
     </div>
     <br>
     <div class="container center">
-      <div id = "pillars" class="card z-depth-1">
-        <div class="card-content">
+      <div class="card z-depth-1 valign-wrapper">
+        <div class="card-content valign center-block">
           <div class="row">
-            <div class="col s12 m4">
-              <i class="fa fa-plug fa-5x"></i>
-              <h4>Connect with others</h4>
-              <p>Network and meet others that work in the field, and find your passion so that you can build up those skills before you graduate.</p><br>
-            </div>
-            <div class="col s12 m4">
-              <i class="fa fa-code fa-5x"></i>
-              <h4>Learn valuable skills</h4>
-              <p>We've hosted many workshops, tech-talks and organized other events throughout the years. We're always looking for teachers as well as students that want more knowledge!</p><br>
-            </div>
-            <div class="col s12 m4">
-              <i class="fa fa-heart fa-5x"></i>
-              <h4>We are students like you</h4>
-              <p>...And we are sick of lectures. We would much rather learn collaboratively in groups and help eachother out. And learn things that companies are <i>actually</i> looking for.</p><br>
+            <div id = "pillar1">
+              <div class="col s12 m6">
+                <i class="fa fa-plug fa-5x"></i>
+                <h4>Connect with others</h4>
+                <p>Network and meet others that work in the field, and find your passion so that you can build up those skills before you graduate.</p><br>
+              </div>
+              <div class="col s12 m6">
+                <img class="materialboxed responsive-img" style="vertical-align: middle;" width="800" src="https://s3.amazonaws.com/cshub-bucket/assets/images/pillar1.jpg">
+              </div>
             </div>
           </div>
         </div>
-        <div class="card-action grey lighten-4">
-        <%= link_to "Join us today", main_app.new_user_registration_path, class: "waves-effect waves-light btn-large orange lighten-1" %>
-        <%= link_to "See more", main_app.pages_about_path, class: "waves-effect waves-light btn-large btn-flat" %>
+      </div>
+      <div class="card z-depth-1">
+        <div class="card-content">
+          <div class="row">
+            <div id = "pillar2">
+              <div class="col s12 m6 right">
+                <i class="fa fa-code fa-5x"></i>
+                <h4>Learn valuable skills</h4>
+                <p>We've hosted many workshops, tech-talks and organized other events throughout the years. We're always looking for teachers as well as students that want more knowledge!</p><br>
+              </div>
+              <div class="col s12 m6">
+                <img class="materialboxed responsive-img" width="800" src="https://s3.amazonaws.com/cshub-bucket/assets/images/pillar2.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card z-depth-1">
+        <div class="card-content">
+          <div class="row">
+            <div id = "pillar3">
+              <div class="col s12 m6">
+                <i class="fa fa-heart fa-5x"></i>
+                <h4>We are students like you</h4>
+                <p>...And we are sick of lectures. We would much rather learn collaboratively in groups and help eachother out. And learn things that companies are <i>actually</i> looking for.</p>
+              </div>
+              <div class="col s12 m6 valign-wrapper">
+                <img class="valign materialboxed responsive-img" width="800" src="https://s3.amazonaws.com/cshub-bucket/assets/images/pillar3.jpg">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+  <% if current_user.nil? %>
+    <div id="pillar4" class="valign">
+      <div class="card-panel grey lighten-4 center-align">
+        <%= link_to "Join us today", main_app.new_user_registration_path, class: "waves-effect waves-light btn-large orange lighten-1" %>
+        <%= link_to "See more", main_app.pages_about_path, class: "waves-effect waves-light btn-large btn-flat" %>
+      </div>
+    </div>
+  <% else %>
+    <div id="pillar4" class="valign">
+      <div class="card-panel grey lighten-4 center-align">
+        <%= link_to "See what's happening", main_app.project_index_path, class: "waves-effect waves-light btn-large orange lighten-1" %>
+        <%= link_to "See more", main_app.pages_about_path, class: "waves-effect waves-light btn-large btn-flat" %>
+      </div>
+    </div>
+  <% end %>
     <script src="assets/TweenLite.min.js"></script>
     <script src="assets/EasePack.min.js"></script>
     <script src="assets/rAF.js"></script>
@@ -52,8 +91,12 @@
 </html>
 
 <script type="text/javascript">
-      $(document).ready(function(){
+    $(document).ready(function(){
       $('.slider').slider({full_width: true});
+    });
+
+    $(document).ready(function(){
+      $('.materialboxed').materialbox();
     });
 </script>
 
@@ -75,7 +118,10 @@ updateColor();
 
 <script type="text/javascript">
   var options = [
-    {selector: '#pillars', offset: 200, callback: 'Materialize.fadeInImage("#pillars")' }
+    {selector: '#pillar1', offset: 100, callback: 'Materialize.fadeInImage("#pillar1")' },
+    {selector: '#pillar2', offset: 200, callback: 'Materialize.fadeInImage("#pillar2")' },
+    {selector: '#pillar3', offset: 275, callback: 'Materialize.fadeInImage("#pillar3")' },
+    {selector: '#pillar4', offset: 300, callback: 'Materialize.fadeInImage("#pillar4")' },
   ];
   Materialize.scrollFire(options);
 </script>

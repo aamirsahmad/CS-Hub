@@ -1,35 +1,46 @@
 <div class="row">
-  <br/>
-  <h4 class="center-align">All Users</h4>
-  <% User.all.order('position, position_start DESC, created_at DESC').each do |u| %>
-    <div class="col s6 m4 l2">
-      <div class="card user-card">
-        <div class="card-image waves-effect waves-block waves-light">
-          <%= image_tag u.forem_avatar, class: "responsive-img activator" %>
-            <span class="card-title activator grey lighten-4 teal-text text-darken-2"><b><%= u.name %></b>
-            <br/>
-              <% if u.position? %>
-              <span class="badge"><%= u.position %></span>
-              <% end %>
-            </span>
-        </div>
+  <span>
+    <div class="teal lighten-1 center-align z-depth-0 valign-wrapper">
+      <h4 class="valign center-block thin white-text center-align" id='forums_title'>All Users</h4>
+    </div>
+  </span>
+  <div class="row">
+    <% User.all.order('position, position_start DESC, created_at DESC').each do |u| %>
+      <div class="col s6 m4 l2">
+        <div class="card user-card">
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag u.forem_avatar, class: "responsive-img activator" %>
+              <span class="card-title activator grey lighten-4 teal-text text-darken-2"><b><%= u.name %></b>
+              <br/>
+                <% if u.position? %>
+                <span class="badge"><%= u.position %></span>
+                <% end %>
+              </span>
+          </div>
 
-        <div class="card-reveal">
-          <h6>
-            <span class="card-title grey-text text-darken-4">
-              <%= u.name %><i class="material-icons right">close</i>
-            </span>
-            <p>Last sign in: <%= timeago(u.current_sign_in_at) %></p>
-            <p> Email: <%= u.email %> </p>
-            <% if u.position? && u.position_start? && u.position_end? %>
-            <p><span class="badge">
-              <%= u.position %> from <%= u.position_start.year %> to <%= u.position_end.year %></span></p>
-            <% end %>
-          </h6>
+          <div class="card-reveal">
+            <h6>
+              <span class="card-title grey-text text-darken-4">
+                <%= u.name %><i class="material-icons right">close</i>
+              </span>
+              <p>Last sign in: <%= timeago(u.current_sign_in_at) %></p>
+              <p> Email:
+                <% if !current_user.nil? %>
+                  <%= u.email %>
+                <% else %>
+                  Not Visible
+                <% end %>  
+              </p>
+              <% if u.position? && u.position_start? && u.position_end? %>
+              <p><span class="badge">
+                <%= u.position %> from <%= u.position_start.year %> to <%= u.position_end.year %></span></p>
+              <% end %>
+            </h6>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <script>

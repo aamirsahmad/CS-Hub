@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag "normalize" %>
 <%= stylesheet_link_tag "homepage-canvas" %>
 
-
 <header data-no-turbolink="true">
   <ul id="dropdown-account" class="dropdown-content">
     <li><%= link_to "My Profile", main_app.edit_user_registration_path %></li>
@@ -16,20 +15,72 @@
     <li><%= link_to "Log out", main_app.destroy_user_session_path, method: :delete %></li>
   </ul>
   <div class="navbar-fixed">
-  <nav class="white z-depth-1">
+  <% @active_page = request.path.split("/")[1] %>
+  <% @activate_li = "<li class=\"active\">" %>
+  <% @unactivate_li = "<li>" %>
+  <nav class="grey lighten-3 z-depth-0">
     <div class="container">
       <div class="nav-wrapper">
-      <%= link_to main_app.root_path do %>
-      <%= image_tag "cshub_cropped.png", class: "brand-logo left responsive-img logo-main hide-on-med-and-down", size: "175" %>
-      <% end %>
-      <%= link_to main_app.root_path do %>
-      <%= image_tag "cshub_cropped.png", class: "brand-logo right responsive-img logo-main hide-on-large-only", size: "175" %>
-      <% end %>
+        <ul>
+          <li>
+        <%= link_to main_app.root_path do %>
+          <%= image_tag "cshub_cropped.png", class: "brand-logo left responsive-img logo-main hide-on-med-and-down", size: "175" %>
+        <% end %>
+        <%= link_to main_app.root_path do %>
+          <%= image_tag "cshub_cropped.png", class: "brand-logo right responsive-img logo-main hide-on-large-only", size: "175" %>
+        <% end %>
+          </li>
+        </ul>
         <a href="#" data-activates="mobile-demo" class="button-collapse black-text"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><%= link_to "Projects", main_app.project_index_path, class: "black-text" %></li>
-          <li><%= link_to "Forum", forem.forums_path, class: "black-text" %></li>
-          <li><%= link_to "Users", main_app.pages_userlist_path, class: "black-text" %></li>
+          <% if @active_page == "project" %>
+            <%=raw @activate_li %>
+          <% else %>
+            <%=raw @unactivate_li %>
+          <% end %>
+            <%= link_to main_app.project_index_path, class: "black-text" do %>
+            <div>
+              <i class="left material-icons">stars</i>
+              Projects
+            </div>
+            <% end %>
+          </li>
+          <% if @active_page == "forums" %>
+            <%=raw @activate_li %>
+          <% else %>
+            <%=raw @unactivate_li %>
+          <% end %>
+            <%= link_to forem.forums_path, class: "black-text" do %>
+            <div>
+              <i class="left material-icons">recent_actors</i>
+              Forum
+            </div>
+            <% end %>
+          </li>
+          <% if @active_page == "uploads" %>
+            <%=raw @activate_li %>
+          <% else %>
+            <%=raw @unactivate_li %>
+          <% end %>
+            <%= link_to main_app.uploads_path, class: "black-text" do %>
+            <div>
+              <i class="left material-icons">assignment</i>
+              Docs
+            </div>
+            <% end %>
+          </li>
+          <% if request.path.split("/")[2] == "userlist" %>
+            <%=raw @activate_li %>
+          <% else %>
+            <%=raw @unactivate_li %>
+          <% end %>
+            <%= link_to main_app.pages_userlist_path, class: "black-text" do %>
+            <div>
+              <i class="left material-icons">contacts</i>
+              Users
+            </div>
+            <% end %>
+          </li>
           <% if(!user_signed_in?) %>
           <li><%= link_to "Login", main_app.new_user_session_path, class: "waves-effect waves-light btn" %></li>
           <% else %>
@@ -44,6 +95,7 @@
           <li><%= link_to "Projects", main_app.project_index_path %></li>
           <li><%= link_to "Forum", forem.forums_path %></li>
           <li><%= link_to "Users", main_app.pages_userlist_path %></li>
+          <li><%= link_to "Docs", main_app.uploads_path, class: "black-text" %></li>
           <% if(!user_signed_in?) %>
           <li><%= link_to "Login", main_app.new_user_session_path %></li>
           <% else %>
@@ -64,6 +116,9 @@
 
 <script>
 
+$(document).ready(function(){
+  $('.tooltipped').tooltip({delay: 50});
+});
 
 $(document).on('scroll', function (e) { updateColor(); });
 //$(document).on('scroll', function (e) { updateSize(); });
