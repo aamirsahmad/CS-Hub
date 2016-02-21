@@ -7,7 +7,7 @@
 <div class="container" data-no-turbolink="true">
   <div class="row">
     <% if current_user.uploads.count < @min_required_uploads %>
-    <h6 class="right red card-panel lighten-4 center-align">
+    <h6 id="file-shares" class="right red card-panel lighten-4 center-align">
       <div class="red-text"><%= current_user.uploads.count %> shared</div>
       <i class="small material-icons">present_to_all</i>
       <div class=""><%= @uploads.count %> total</div>
@@ -33,7 +33,7 @@
       </div>
     </div>
     <% else %>
-    <h6 class="right teal card-panel lighten-4 center-align">
+    <h6 id="file-shares" class="right teal card-panel lighten-4 center-align">
       <div class=""><%= current_user.uploads.count %> shared</div>
       <i class="small material-icons">present_to_all</i>
       <div class=""><%= @uploads.count %> total</div>
