@@ -5,17 +5,10 @@ class UploadsController < ApplicationController
   end
 
   def create
-    # Make object in bucket
-    key = "uploads/" + params[:document].original_filename + DateTime.now.to_s
-    obj = S3_BUCKET.objects[key]
-    #upload file
-    obj.write(
-      file: params[:document],
-      acl: :public_read
-    )
     #create object for upload
     @upload = Upload.create( upload_params )
     @upload.update(user_id: current_user.id)
+    @upload.update(url: @upload.document.url)
 
     #save upload
     if @upload.save
