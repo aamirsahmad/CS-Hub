@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def trimmedName
-    name.length > 25? name[0..25] + "..." : name
+    name.length > 23? name[0..23] + "..." : name
   end
 
   def average_rating
