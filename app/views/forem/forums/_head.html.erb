@@ -1,5 +1,5 @@
 <div id='forum'>
-  <h5><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h5>
+  <h5 class="flow-text"><%= link_to t('forem.forum.forums'), forem.root_path, :class => "flow-text" %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category], :class => "flow-text" %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum], :class => "flow-text" %></h5>
 
 
   <ul class="collection with-header z-depth-0">

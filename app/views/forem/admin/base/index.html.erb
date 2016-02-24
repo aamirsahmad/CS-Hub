@@ -1,16 +1,18 @@
-<h1><%= t('forem.admin.area') %></h1>
+<div class="container">
+  <h1><%= t('forem.admin.area') %></h1>
 
-<p>
-  <%= t('forem.admin.welcome') %>
-</p>
+  <p>
+    <%= t('forem.admin.welcome') %>
+  </p>
 
-<ul>
-  <li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %> </li>
-  <li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path %></li>
-  <li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path %></li>
-</ul>
+  <ul>
+    <li><%= link_to t('forem.admin.forum.index'), forem.admin_forums_path, :class => "btn grey lighten-1" %> </li>
+    <li><%= link_to t('forem.admin.category.index'), forem.admin_categories_path, :class => "btn grey lighten-1" %></li>
+    <li><%= link_to t('forem.admin.group.index'), forem.admin_groups_path, :class => "btn grey lighten-1" %></li>
+  </ul>
 
-<br>
-<footer id='admin_link'>
-  <%= link_to t(:back_to_forums, :scope => 'forem.admin'), forem.root_path %> 
-</footer>
+  <br>
+  <footer id='admin_link'>
+    <%= link_to t(:back_to_forums, :scope => 'forem.admin'), forem.root_path, :class => "btn" %>
+  </footer>
+</div>
