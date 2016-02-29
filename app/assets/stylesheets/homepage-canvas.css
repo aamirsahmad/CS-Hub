@@ -3,7 +3,6 @@
 .clearfix:after { clear: both; }
 
 body {
-	background: #fff;
 	color: #383a3c;
 	font-weight: 400;
 	font-size: 1em;
