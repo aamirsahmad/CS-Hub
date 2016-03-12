@@ -7,10 +7,10 @@
   <div class="container">
     <div class="row">
       <% User.all.order('position, position_start DESC, created_at DESC').each do |u| %>
-        <div class="col s6 m4 l3">
-          <div class="card user-card" style="width: 98%;">
+        <div class="col s6 m4 l2">
+          <div class="card user-card" style="height: 240px; min-width: 50%; max-width: 100%">
             <div class="card-image waves-effect waves-block waves-light">
-              <%= image_tag u.forem_avatar, class: "responsive-img activator", :style => "max-height: 100%; max-width: 100%;" %>
+              <%= image_tag u.forem_avatar, class: "responsive-img activator", :style => "height: 240px;" %>
                 <span class="card-title activator grey lighten-4 teal-text text-darken-2"><b><%= u.name %></b>
                 <br/>
                   <% if u.position? %>
