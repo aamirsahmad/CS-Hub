@@ -8,9 +8,9 @@
     <div class="row">
       <% User.all.order('position, position_start DESC, created_at DESC').each do |u| %>
         <div class="col s6 m4 l3">
-          <div class="card user-card" style="width: 98%;">
+          <div class="card user-card" style="max-height:250px; min-width: 50%; max-width: 100%">
             <div class="card-image waves-effect waves-block waves-light">
-              <%= image_tag u.forem_avatar, class: "responsive-img activator", :style => "max-height: 100%; max-width: 100%;" %>
+              <%= image_tag u.forem_avatar, class: "responsive-img activator", :style => "min-height: 50%; max-height: 250px;" %>
                 <span class="card-title activator grey lighten-4 teal-text text-darken-2"><b><%= u.name %></b>
                 <br/>
                   <% if u.position? %>
