@@ -86,13 +86,16 @@ p.ref {
 }
 
 .main-title .card {
-  opacity: 0.75;
+  opacity: 0.85;
+	border-radius: 25px;
+  border: 10px solid #26a69a;
+  padding: 20px;
 }
 .main-title .card-content {
   opacity: 1;
 }
 .main-title .card-action {
-  opacity: .8;
+  opacity: 1.0;
 }
 
 @media only screen and (max-width : 768px) {
