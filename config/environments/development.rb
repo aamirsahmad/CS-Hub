@@ -35,19 +35,24 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Mailer
+  ActionMailer::Base.register_interceptor(SendGrid::MailInterceptor)
   config.action_mailer.default_url_options = {host: 'http://localhost:3000/'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mandrillapp.com',
-    port: 587,
-    enable_starttls_auto: true,
-    user_name: ENV['MAILER_API_USERNAME'],
-    password: ENV['MAILER_API_KEY'],
-    authentication: 'login'
-  }
+  :user_name => ENV['SENDGRID_API_USERNAME'],
+  :password => ENV['SENDGRID_API_PASSWORD'],
+  :domain => 'heroku.com',
+  :address => 'smtp.sendgrid.net',
+  :port => 465,
+  :authentication => :plain,
+  :enable_starttls_auto => true,
+  :ssl => true
+}
 
   # AWS S3
   config.paperclip_defaults = {

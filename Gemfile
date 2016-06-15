@@ -15,6 +15,7 @@ gem 'materialize-sass'
 gem 'devise', '~> 3.5', '>= 3.5.5'
 gem 'toastr-rails'
 gem 'mandrill-api', '1.0.52', require: 'mandrill'
+gem 'sendgrid-rails', '~> 2.0'
 
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
@@ -52,4 +53,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
