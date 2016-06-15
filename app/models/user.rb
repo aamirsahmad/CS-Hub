@@ -31,7 +31,15 @@ class User < ActiveRecord::Base
   end
 
   def send_notification
-    MandrillMailer.new_user(self).deliver
+    # Create the user from params
+    @user = User.find_by_email(email)
+    if @user.save
+      # Deliver the signup email
+      ApplicationMailer.send_signup_email(@user).deliver
+      #redirect_to(@user, :notice => 'User created')
+    else
+      #render :action => 'new'
+    end
   end
 
   def upload_count
